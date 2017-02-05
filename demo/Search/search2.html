@@ -1,0 +1,100 @@
+
+
+<!DOCTYPE html>
+<html >
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="search.css" />
+
+    <script src='console_runner.js'></script>
+<script src='event_runner.js'></script>
+<script src='live_reload.js'></script>
+
+</head>
+
+<body>
+<h1>Isotope - filtering with search field</h1>
+
+<p><input type="text" class="quicksearch" placeholder="Search" /></p>
+
+
+<section class="grid grid--loading">
+      <!-- Grid sizer for a fluid Isotope (Masonry) layout -->
+      <div class="grid__sizer"></div>
+
+            <a href="http://awco.nl/winkel/vintage-collectie/iwc-horloges/portugese-3714-80" target="_blank">
+            <div class="grid__item element-item IWC
+[2010]" style="position: absolute; left: 20%; top: 24px;">
+              <div class="slider flickity-enabled is-draggable" tabindex="0">
+                
+                
+                
+              <div class="flickity-viewport" style="height: 338px;"><div class="flickity-slider" style="left: 0px; transform: translateX(-300%);"><div class="slider__item is-selected" style="position: absolute; left: 300%;"><img src="http://awco.nl/wp-content/uploads/2016/08/IMG_0846-466x700.jpg" alt="Dummy"></div></div></div><ol class="flickity-page-dots"><li class="dot is-selected"></li><li class="dot"></li><li class="dot"></li></ol></div>
+              <div class="meta">
+                <h3 class="meta__title">IWC
+[2010]</h3>
+                <span class="meta__brand">€ 10.750,00</span>
+                <!--<span class="meta__price">€ 10.750,00</span>-->
+              </div>
+              <button class="action action--button action--buy"><i class="fa fa-shopping-cart"></i><span class="text-hidden">Add to cart</span></button>
+            </div>
+            </a>
+
+
+            <a href="https://amsterdamvintagewatches.com/en/wristwatches/2030-rolex-datejust-1603.html?search_query=rolex&amp;results=52" target="_blank">
+            <div class="grid__item Rolex Datejust 1603 element-item" style="position: absolute; left: 20%; top: 9471px;">
+              <div class="slider flickity-enabled is-draggable" tabindex="0">
+                
+                
+                
+              <div class="flickity-viewport" style="height: 227px;"><div class="flickity-slider" style="left: 0px; transform: translateX(-300%);"><div class="slider__item is-selected" style="position: absolute; left: 300%;"><img src="https://amsterdamvintagewatches.com/8488-home_default/rolex-datejust-1603.jpg" alt="Dummy"></div></div></div><ol class="flickity-page-dots"><li class="dot is-selected"></li><li class="dot"></li><li class="dot"></li></ol></div>
+              <div class="meta">
+                <h3 class="meta__title">Rolex Datejust 1603</h3>
+                <span class="meta__brand">€ 3.450</span>
+                <!--<span class="meta__price">€ 3.450</span>-->
+              </div>
+              <button class="action action--button action--buy"><i class="fa fa-shopping-cart"></i><span class="text-hidden">Add to cart</span></button>
+            </div>
+            </a>
+
+
+
+  
+</section>
+
+
+<script src='timeout.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='https://npmcdn.com/isotope-layout@3.0.1/dist/isotope.pkgd.js'></script>
+
+<script>var qsRegex;
+var $grid = $('.grid').isotope({
+    itemSelector: '.element-item',
+    layoutMode: 'fitRows',
+    filter: function () {
+        return qsRegex ? $(this).text().match(qsRegex) : true;
+    }
+});
+var $quicksearch = $('.quicksearch').keyup(debounce(function () {
+    qsRegex = new RegExp($quicksearch.val(), 'gi');
+    $grid.isotope();
+}, 200));
+function debounce(fn, threshold) {
+    var timeout;
+    return function debounced() {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        function delayed() {
+            fn();
+            timeout = null;
+        }
+        timeout = setTimeout(delayed, threshold || 100);
+    };
+}
+//# sourceURL=pen.js
+</script>
+
+</body>
+</html>
